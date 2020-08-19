@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
 // provider is a helper component that allows us to inject our store into the react components
 import { Provider } from 'react-redux';
 import './index.css';
@@ -28,6 +29,7 @@ const logger = store => {
     }
 };
 
+// logic to use redux devtools and connect the store to the site
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger)));
