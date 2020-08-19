@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 // provider is a helper component that allows us to inject our store into the react components
 import { Provider } from 'react-redux';
 import './index.css';
@@ -28,7 +28,9 @@ const logger = store => {
     }
 };
 
-const store = createStore(rootReducer, applyMiddleware(logger));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger)));
 
 // we have a single store while having multiple reducers. each reducer should tackle a single functionality
 
