@@ -24,6 +24,8 @@ class Counter extends Component {
             case 'sub':
                 this.setState( ( prevState ) => { return { counter: prevState.counter - value } } )
                 break;
+            default:
+                return;
         }
     }
 
@@ -70,7 +72,7 @@ const mapDispatchToProps = dispatch => {
         onStoreResult: (result) => dispatch(actionCreators.storeResult(result)),
         onDeleteResult: (id) => dispatch(actionCreators.deleteResult(id))
     };
-};
+}; 
 
 //connect is a function that returns a HOC
 // if you don't need mapStateToProps, use null

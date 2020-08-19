@@ -18,11 +18,11 @@ const rootReducer = combineReducers({
 
 const logger = store => {
     // this nested function is simply a middleware
-    return nextArg => {
+    return next => {
         return action => {
             console.log('[Middleware] Dispatching', action);
             // this lets the action continue to the reducer
-            const result = nextArg(action);
+            const result = next(action);
             console.log('[Middlware] next state', store.getState());
             return result;
         }

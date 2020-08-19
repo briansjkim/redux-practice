@@ -22,21 +22,31 @@ export const decrement = () => {
 export const add = (val) => {
     return {
         type: ADD,
-        val: val
+        value: val
     }
 };
 
 export const subtract = (val) => {
     return {
         type: SUBTRACT,
-        val: val
+        value: val
     }
 };
 
-export const storeResult = (res) => {
+export const saveResult = (res) => {
     return {
         type: STORE_RESULT,
         result: res
+    }
+}
+
+// storeResult is now an async function which uses saveResult which is a sync function
+export const storeResult = (res) => {
+    // we have access to dispatch bc of redux thunk
+    return (dispatch) => {
+        setTimeout(() => {
+            dispatch(saveResult(res));
+        }, 2000);
     }
 };
 
