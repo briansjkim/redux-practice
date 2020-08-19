@@ -6,3 +6,44 @@ export const STORE_RESULT = 'STORE_RESULT';
 export const DELETE_RESULT = 'DELETE_RESULT';
 
 // action creators are functions that create/returns an action
+// can receive an input like payloads
+export const increment = () => {
+    return {
+        type: INCREMENT
+    }
+};
+
+export const decrement = () => {
+    return {
+        type: DECREMENT
+    }
+};
+
+export const add = (val) => {
+    return {
+        type: ADD,
+        val: val
+    }
+};
+
+export const subtract = (val) => {
+    return {
+        type: SUBTRACT,
+        val: val
+    }
+};
+
+export const storeResult = (res) => {
+    return {
+        type: STORE_RESULT,
+        result: res
+    }
+};
+
+export const deleteResult = (resElId) => {
+    return {
+        type: DELETE_RESULT,
+        resultElId: resElId
+    }
+};
+
